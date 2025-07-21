@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+        form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #1da9e6;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        background-color: #f9f9f9;
+        margin-top: 80px; 
+    }
+    .register_table {
+            margin-top: 20px; 
+        }
+</style>
+<body>
+    <!-- 表单数据提交方式为post -->
+    <form action="http://localhost:8080/user/reg" method="post">
+        <table class="register_table" cellpadding="2">
+
+            <legend style="font-style: italic;">注册新用户</legend>
+
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>
+                    <!-- 单选按钮控件 -->
+                    <input type="radio" name="sex" value="男">男
+                    <input type="radio" name="sex" value="女">女
+                </td>
+            </tr>
+            <tr>
+                <td>兴趣</td>
+                <!-- 复选框控件 -->
+                <td>
+                <input type="checkbox" name="hobby" value="篮球">看电影
+                <input type="checkbox" name="hobby" value="足球">敲代码
+                <input type="checkbox" name="hobby" value="游泳">玩游戏
+                </td>
+            </tr>
+            <tr>
+                <td>头像</td>
+                <!-- 文件上传控件 -->
+                <td><input type="file" name="photo"></td>
+                <!-- 显示头像图片 -->
+                <td><img src="" width="50" height="50"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <!-- 注册按钮控件 -->
+                <td><input type="submit" value="注册"></td>
+                <!-- 重填控件 -->
+                <td><input type="reset" value="重填"></td>
+                
+            </tr>
+        </table> 
+    </form>
+</body>
+<script>
+    // 获取文件上传控件
+    const photoInput = document.querySelector('input[type="file"]');
+    // 为文件上传控件添加事件监听器
+    photoInput.addEventListener('change', (event) => {
+        // 获取所选文件
+        const file = event.target.files[0];
+        // 创建一个新变量，用于存储文件读取器
+        let fileReader;
+        // 检查浏览器是否支持FileReader API
+        if (typeof FileReader === 'function') {
+            // 创建一个FileReader实例
+            fileReader = new FileReader();
+            // 监听文件读取完成的事件
+            fileReader.onload = (e) => {
+                // 将读取到的图片数据设置为表单数据
+                const img = document.querySelector('img');
+                img.src = e.target.result;
+            };
+            // 在这里阻止文件地址出现
+            event.target.value = '';
+        } else {
+            alert('FileReader API not supported');
+        }
+
+        // 开始读取文件
+        fileReader.readAsDataURL(file);
+    });
+</script>
+</html>

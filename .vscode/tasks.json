@@ -1,0 +1,56 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 生成活动文件",
+            "command": "C:\\CODE\\vscode\\x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileDirname}\\*.cpp",//"${file}"
+                // "链接sdl和pt"
+                "-I",
+                "D:/SDL/SDL2-devel-2.30.5-mingw/SDL2-2.30.5/x86_64-w64-mingw32/include",
+                "-I",
+                "C:/Qt/6.9.1/mingw_64/include",
+                "-I",
+                "C:/Qt/6.9.1/mingw_64/include/QtWidgets",
+                "-I",
+                "C:/Qt/6.9.1/mingw_64/include/QtGui",
+                "-I",
+                "C:/Qt/6.9.1/mingw_64/include/QtCore",
+                "-L",
+                "D:/SDL/SDL2-devel-2.30.5-mingw/SDL2-2.30.5/x86_64-w64-mingw32/lib",
+                "-L",
+                "D:/SDL/SDL2_ttf-devel-2.22.0-mingw/SDL2_ttf-2.22.0/x86_64-w64-mingw32/lib",
+                "-L",
+                "D:/SDL/SDL2_image-devel-2.8.2-mingw/SDL2_image-2.8.2/x86_64-w64-mingw32/lib",
+                "-L",
+                "C:/Qt/6.9.1/mingw_64/lib",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_ttf",
+                "-lSDL2_image",
+                "-lmingw32",
+                "-lQt6Widgets",
+                "-lQt6Core",
+                "-lQt6Gui",
+                // "-mwindows",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}

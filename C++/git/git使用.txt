@@ -1,0 +1,2 @@
+使用git一定最好使用外网
+使用git config --global http.proxy命令修改代理地址
